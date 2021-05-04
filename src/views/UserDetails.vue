@@ -39,16 +39,16 @@
             <p>{{ singleuser.company.catchPhrase }}</p>
           </div>
         </div>
-      </div>
-    </div>
-    <h3 class="mb-5">Posts By > {{ singleuser.name }}</h3>
-    <div class="users-posts">
-      <div v-for="item in postsuser" :key="item.id">
-        <div class="singleuserpostbox mb-2">
-          <h4>{{ item.title }}</h4>
-          <b-card-text>
-            {{ item.body }}
-          </b-card-text>
+        <h3 class="mb-5">Posts By > {{ singleuser.name }}</h3>
+        <div class="users-posts">
+          <div v-for="item in postsuser" :key="item.id">
+            <div class="singleuserpostbox mb-2">
+              <h4>{{ item.title }}</h4>
+              <b-card-text>
+                {{ item.body }}
+              </b-card-text>
+            </div>
+          </div>
         </div>
       </div>
     </div>
