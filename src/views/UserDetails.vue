@@ -67,8 +67,8 @@ export default {
   },
   created() {
     let params = this.$route.params.id;
-    let URL = `http://jsonplaceholder.typicode.com/users/`;
-    let POSTS = `http://jsonplaceholder.typicode.com/posts?userId=`;
+    let URL = `https://jsonplaceholder.typicode.com/users/`;
+    let POSTS = `https://jsonplaceholder.typicode.com/posts?userId=`;
     fetch(URL + params)
       .then((response) => response.json())
       .then((data) => (this.singleuser = [data]));
