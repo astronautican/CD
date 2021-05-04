@@ -1,6 +1,6 @@
 <template>
   <div class="center">
-    <h3 class="mb-5">Users > {{ singleuser.name }}</h3>
+    <h3 class="mb-5"><a href="/">Users</a> > {{ singleuser.name }}</h3>
     <div class="singleuserboxes">
       <div class="singleuserbox">
         <h3 class="mb-5">Contact Info</h3>
