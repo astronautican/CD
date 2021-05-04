@@ -1,27 +1,31 @@
 <template>
-  <div class="">
-    <div v-if="userlist.length" class="search-wrapper">
-      <input type="text" v-model="search" placeholder="Search title.." />
-      <label>Search title:</label>
-    </div>
+  <div class="app">
+    <div class="searchboxes">
+      <div v-if="userlist.length" class="search-wrapper">
+        <input type="text" v-model="search" placeholder="Search title.." />
+        <label>Search title:</label>
+      </div>
 
-    <select v-model="currentOrder">
-      <option value="name">Sort by Name</option>
-      <option value="email">Sort by email</option>
-    </select>
+      <select v-model="currentOrder">
+        <option value="name">Sort by Name</option>
+        <option value="email">Sort by email</option>
+      </select>
+    </div>
 
     <div v-for="item in filteredList" :key="item.id">
       <router-link :to="{ name: 'user', params: { id: item.id } }">
         <div class="user-box">
-          <ul class="users-list">
+          <ul class="users-listitem">
             <div class="user-name">
               <span class="dot"></span>
-              <li>
-                {{ item.name }}
-              </li>
-              <li>
-                {{ item.username }}
-              </li>
+              <div class="nameusername">
+                <li>
+                  {{ item.name }}
+                </li>
+                <li>
+                  {{ item.username }}
+                </li>
+              </div>
             </div>
             <div>
               <li>

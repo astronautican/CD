@@ -1,6 +1,6 @@
 <template>
   <div class="center">
-    <h3>Users > {{ singleuser.name }}</h3>
+    <h3 class="mb-5">Users > {{ singleuser.name }}</h3>
     <div class="singleuserboxes">
       <div class="singleuserbox">
         <h3 class="mb-5">Contact Info</h3>
@@ -37,15 +37,15 @@
         <p>{{ singleuser.company.catchPhrase }}</p>
       </div>
     </div>
-    <h3>Posts By > {{ singleuser.name }}</h3>
+    <h3 class="mb-5">Posts By > {{ singleuser.name }}</h3>
     <div class="users-posts">
       <div v-for="item in postsuser" :key="item.id">
-        <b-card tag="article" style="max-width: 20rem;" class="mb-2">
+        <div class="singleuserpostbox mb-2">
           <h4>{{ item.title }}</h4>
           <b-card-text>
             {{ item.body }}
           </b-card-text>
-        </b-card>
+        </div>
       </div>
     </div>
   </div>
