@@ -1,0 +1,83 @@
+<template>
+  <div class="center">
+    <h3>Users > {{ singleuser.name }}</h3>
+    <div class="singleuserboxes">
+      <div class="singleuserbox">
+        <h3 class="mb-5">Contact Info</h3>
+        <p>Name:{{ singleuser.name }}</p>
+        <p>
+          Email:<a :href="singleuser.email" target="_blank">
+            {{ singleuser.email }}</a
+          >
+        </p>
+        <p>
+          Phone:<a :href="singleuser.email" target="_blank">{{
+            singleuser.phone
+          }}</a>
+        </p>
+        <p>
+          Website:
+          <a :href="singleuser.website" target="_blank">
+            {{ singleuser.website }}</a
+          >
+        </p>
+      </div>
+      <div class="singleuserbox">
+        <h3 class="mb-5">Address</h3>
+        <p>
+          {{ singleuser.address.suite }} {{ singleuser.address.street }},
+          {{ singleuser.address.city }},
+          {{ singleuser.address.zipcode }}
+        </p>
+      </div>
+      <div class="singleuserbox">
+        <h3 class="mb-5">Company</h3>
+        <p>{{ singleuser.company.name }}</p>
+        <p>{{ singleuser.company.bs }}</p>
+        <p>{{ singleuser.company.catchPhrase }}</p>
+      </div>
+    </div>
+    <h3>Posts By > {{ singleuser.name }}</h3>
+    <div class="users-posts">
+      <div v-for="item in postsuser" :key="item.id">
+        <b-card tag="article" style="max-width: 20rem;" class="mb-2">
+          <h4>{{ item.title }}</h4>
+          <b-card-text>
+            {{ item.body }}
+          </b-card-text>
+        </b-card>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "user",
+  props: {
+    // msg: String,
+  },
+  data() {
+    return {
+      singleuser: {},
+      postsuser: {},
+      // params: {$route.params.id},
+    };
+  },
+  created() {
+    // Simple GET request using fetch
+    let params = this.$route.params.id;
+    let URL = `http://jsonplaceholder.typicode.com/users/`;
+    let POSTS = `http://jsonplaceholder.typicode.com/posts?userId=`;
+    fetch(URL + params)
+      .then((response) => response.json())
+      .then((data) => (this.singleuser = data));
+
+    fetch(POSTS + this.$route.params.id)
+      .then((response) => response.json())
+      .then((data) => (this.postsuser = data));
+  },
+};
+</script>
+
+<style></style>
