@@ -64,7 +64,7 @@ export default {
   },
 
   computed: {
-    filteredList() {
+    filteredList: function() {
       return this.userlist
         .filter((user) => {
           return user.name.toLowerCase().includes(this.search.toLowerCase());
