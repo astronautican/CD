@@ -52,7 +52,7 @@ export default {
     return {
       search: "",
       currentOrder: "name",
-      userlist: {},
+      userlist: [],
     };
   },
 
@@ -65,11 +65,12 @@ export default {
 
   computed: {
     filteredList: function() {
-      return this.userlist
+      let filteredList = this.userlist
         .filter((user) => {
           return user.name.toLowerCase().includes(this.search.toLowerCase());
         })
         .sort((a, b) => (a.name > b.name ? 1 : -1));
+      return filteredList;
     },
   },
 };

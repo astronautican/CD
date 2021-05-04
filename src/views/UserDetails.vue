@@ -54,18 +54,14 @@
 <script>
 export default {
   name: "user",
-  props: {
-    // msg: String,
-  },
+  props: {},
   data() {
     return {
       singleuser: {},
       postsuser: {},
-      // params: {$route.params.id},
     };
   },
   created() {
-    // Simple GET request using fetch
     let params = this.$route.params.id;
     let URL = `http://jsonplaceholder.typicode.com/users/`;
     let POSTS = `http://jsonplaceholder.typicode.com/posts?userId=`;
