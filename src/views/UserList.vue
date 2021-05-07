@@ -2,10 +2,8 @@
   <div class="app">
     <h3>Users</h3>
     <div class="searchboxes">
-      <div v-if="userlist.length" class="search-wrapper">
-        <input type="text" v-model="search" placeholder="Search title.." />
-        <label>Search title:</label>
-      </div>
+      <input type="text" v-model="search" placeholder="Search title.." />
+      <label>Search title:</label>
 
       <select v-model="currentOrder">
         <option value="name">Sort by Name</option>
@@ -52,7 +50,9 @@ export default {
     return {
       search: "",
       currentOrder: "name",
+      // orderedList: [],
       userlist: [],
+      filteredlist: [],
     };
   },
 
@@ -64,12 +64,21 @@ export default {
   },
 
   computed: {
-    filteredList: function() {
-      let filteredList = this.userlist
-        .filter((user) => {
-          return user.name.toLowerCase().includes(this.search.toLowerCase());
-        })
-        .sort((a, b) => (a.name > b.name ? 1 : -1));
+    orderedList() {
+      let orderedList = [...this.userlist].sort((a, b) => {
+        if (this.currentOrder === "name") {
+          return a.name > b.name ? 1 : -1;
+        }
+        if (this.currentOrder === "email") {
+          return a.email > b.email ? 1 : -1;
+        }
+      });
+      return orderedList;
+    },
+    filteredList() {
+      let filteredList = this.orderedList.filter((user) => {
+        return user.name.toLowerCase().includes(this.search.toLowerCase());
+      });
       return filteredList;
     },
   },
