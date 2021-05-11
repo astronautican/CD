@@ -1,4 +1,4 @@
-# CD Assignment
+# CD
 
 ### Please run the following commands to set up the project
 

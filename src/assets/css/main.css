@@ -1,3 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+/* a {
+  color: #000000;
+  text-decoration: none;
+}
+
+a :hover {
+  color: #000000;
+  text-decoration: none;
+} */
+
 #app {
   max-width: 1000px;
   margin-left: auto;
@@ -16,6 +32,13 @@ li {
   margin: 0 10px;
 }
 
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .flex {
   display: flex;
   flex-direction: column;
@@ -28,8 +51,26 @@ li {
 
 .searchboxes {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-around;
+  flex-wrap: wrap;
   margin: 20px;
+}
+
+input,
+select {
+  height: 40px;
+}
+
+.search-box {
+  width: 225px;
+  margin: 0 10px;
+}
+
+.select-box {
+  display: flex;
+  flex-direction: column;
+  width: 225px;
+  margin: 0 10px;
 }
 
 .user-box {
@@ -37,9 +78,25 @@ li {
   padding: 20px;
 }
 
+.user-box :hover {
+  opacity: 90%;
+}
+
 .users-listitem {
-  display: flex;
-  justify-content: space-between;
+  display: block;
+}
+
+.userboxlink {
+  color: #000000;
+}
+
+.user-box::before {
+  content: "";
+  height: 50px;
+  width: 50px;
+  background-color: #bbb;
+  border-radius: 50%;
+  float: left;
 }
 
 .nameusername {
@@ -58,13 +115,13 @@ li {
 
 .singleuserbox {
   border: 1px solid rgba(0, 0, 0, 0.125);
-  max-width: 20rem;
+  width: 20rem;
   padding: 30px;
 }
 
 .singleuserpostbox {
   border: 1px solid rgba(0, 0, 0, 0.125);
-  max-width: 20rem;
+  width: 20rem;
   height: 20rem;
   padding: 30px;
 }
@@ -94,4 +151,30 @@ li {
 
 .user-name {
   display: flex;
+}
+
+.icon {
+  margin-right: 5px;
+}
+
+.catchphrase {
+  font-style: italic;
+}
+
+@media only screen and (min-width: 650px) {
+  .users-listitem {
+    display: flex;
+    justify-content: space-between;
+  }
+  .searchboxes {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    margin: 20px;
+  }
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }

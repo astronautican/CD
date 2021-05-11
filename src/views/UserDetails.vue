@@ -6,20 +6,24 @@
         <div class="singleuserboxes">
           <div class="singleuserbox">
             <h3 class="mb-5">Contact Info</h3>
-            <p>Name:{{ singleuser.name }}</p>
             <p>
-              Email:<a :href="singleuser.email" target="_blank">
+              <b-icon icon="person" class="icon"></b-icon>{{ singleuser.name }}
+            </p>
+            <p>
+              <b-icon icon="mailbox" class="icon"></b-icon
+              ><a :href="singleuser.email" target="_blank">
                 {{ singleuser.email }}</a
               >
             </p>
             <p>
-              Phone:<a :href="singleuser.email" target="_blank">{{
+              <b-icon icon="phone" class="icon"></b-icon
+              ><a :href="'tel:' + singleuser.phone" target="_blank">{{
                 singleuser.phone
               }}</a>
             </p>
             <p>
-              Website:
-              <a :href="singleuser.website" target="_blank">
+              <b-icon icon="globe" class="icon"></b-icon>
+              <a :href="'https://www.' + singleuser.website" target="_blank">
                 {{ singleuser.website }}</a
               >
             </p>
@@ -27,7 +31,8 @@
           <div class="singleuserbox">
             <h3 class="mb-5">Address</h3>
             <p>
-              {{ singleuser.address.suite }} {{ singleuser.address.street }},
+              <b-icon icon="map" class="icon"></b-icon
+              >{{ singleuser.address.suite }} {{ singleuser.address.street }},
               {{ singleuser.address.city }},
               {{ singleuser.address.zipcode }}
             </p>
@@ -36,7 +41,7 @@
             <h3 class="mb-5">Company</h3>
             <p>{{ singleuser.company.name }}</p>
             <p>{{ singleuser.company.bs }}</p>
-            <p>{{ singleuser.company.catchPhrase }}</p>
+            <p class="catchphrase">"{{ singleuser.company.catchPhrase }}"</p>
           </div>
         </div>
         <h3 class="mb-5">Posts By > {{ singleuser.name }}</h3>
@@ -67,12 +72,13 @@ export default {
   },
   created() {
     let params = this.$route.params.id;
+    // GET request using fetch and url params to get user details
     let URL = `https://jsonplaceholder.typicode.com/users/`;
-    let POSTS = `https://jsonplaceholder.typicode.com/posts?userId=`;
     fetch(URL + params)
       .then((response) => response.json())
       .then((data) => (this.singleuser = [data]));
-
+    // GET request using fetch and url params to get users posts
+    let POSTS = `https://jsonplaceholder.typicode.com/posts?userId=`;
     fetch(POSTS + this.$route.params.id)
       .then((response) => response.json())
       .then((data) => (this.postsuser = data));
